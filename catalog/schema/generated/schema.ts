@@ -8,92 +8,6 @@ export enum OrganismPloidy {
     POLYPLOID = "POLYPLOID",
 };
 /**
-* Possible priorities of an outbreak.
-*/
-export enum OutbreakPriority {
-    
-    HIGHEST = "HIGHEST",
-    CRITICAL = "CRITICAL",
-    HIGH = "HIGH",
-    MODERATE_HIGH = "MODERATE_HIGH",
-    MODERATE = "MODERATE",
-};
-/**
-* Possible types of an outbreak resource.
-*/
-export enum OutbreakResourceType {
-    
-    PUBLICATION = "PUBLICATION",
-    REFERENCE = "REFERENCE",
-    NEWS = "NEWS",
-    WORKFLOW = "WORKFLOW",
-    DATA = "DATA",
-    OTHER = "OTHER",
-    HGPHYLOPLACE = "HGPHYLOPLACE",
-};
-/**
-* Set of IDs of workflow categories.
-*/
-export enum WorkflowCategoryId {
-    
-    VARIANT_CALLING = "VARIANT_CALLING",
-    TRANSCRIPTOMICS = "TRANSCRIPTOMICS",
-    REGULATION = "REGULATION",
-    ASSEMBLY = "ASSEMBLY",
-    GENOME_COMPARISONS = "GENOME_COMPARISONS",
-    PROTEIN_FOLDING = "PROTEIN_FOLDING",
-    CONSENSUS_SEQUENCES = "CONSENSUS_SEQUENCES",
-    ANNOTATION = "ANNOTATION",
-    COMPARATIVE_GENOMICS = "COMPARATIVE_GENOMICS",
-    OTHER = "OTHER",
-};
-/**
-* Galaxy collection types supported for collection_spec in workflow parameters.
-Currently only 'list' collections are supported, which represent a simple ordered list of datasets.
-*/
-export enum CollectionType {
-    
-    /** A simple ordered list of datasets. Each element in the collection is a separate dataset. */
-    list = "list",
-};
-/**
-* Possible variables that can be inserted into workflow parameters.
-*/
-export enum WorkflowParameterVariable {
-    
-    ASSEMBLY_ID = "ASSEMBLY_ID",
-    ASSEMBLY_FASTA_URL = "ASSEMBLY_FASTA_URL",
-    FASTA_COLLECTION = "FASTA_COLLECTION",
-    GENE_MODEL_URL = "GENE_MODEL_URL",
-    SANGER_READ_RUN_FORWARD_FILE = "SANGER_READ_RUN_FORWARD_FILE",
-    SANGER_READ_RUN_PAIRED = "SANGER_READ_RUN_PAIRED",
-    SANGER_READ_RUN_REVERSE_FILE = "SANGER_READ_RUN_REVERSE_FILE",
-    SANGER_READ_RUN_SINGLE = "SANGER_READ_RUN_SINGLE",
-    SANGER_READ_RUN_SINGLE_FILE = "SANGER_READ_RUN_SINGLE_FILE",
-};
-/**
-* Possible ploidies supported by workflows.
-*/
-export enum WorkflowPloidy {
-    
-    ANY = "ANY",
-    DIPLOID = "DIPLOID",
-    HAPLOID = "HAPLOID",
-    POLYPLOID = "POLYPLOID",
-};
-/**
-* The scope level at which a workflow operates, determining its display context and required inputs.
-*/
-export enum WorkflowScope {
-    
-    /** Workflow operates on a specific genome assembly and requires assembly selection as the first step. */
-    ASSEMBLY = "ASSEMBLY",
-    /** Workflow operates at the organism level, either requiring no specific assembly or working across multiple assemblies. */
-    ORGANISM = "ORGANISM",
-    /** Workflow operates on a user-provided sequence (e.g., single gene) rather than a full genome assembly. */
-    SEQUENCE = "SEQUENCE",
-};
-/**
 * Enumeration of possible library layouts for sequencing data.
 */
 export enum LibraryLayout {
@@ -215,6 +129,92 @@ export enum LibraryStrategy {
     /** Other, unspecified, or unknown library strategy */
     OTHER = "OTHER",
 };
+/**
+* Possible priorities of an outbreak.
+*/
+export enum OutbreakPriority {
+    
+    HIGHEST = "HIGHEST",
+    CRITICAL = "CRITICAL",
+    HIGH = "HIGH",
+    MODERATE_HIGH = "MODERATE_HIGH",
+    MODERATE = "MODERATE",
+};
+/**
+* Possible types of an outbreak resource.
+*/
+export enum OutbreakResourceType {
+    
+    PUBLICATION = "PUBLICATION",
+    REFERENCE = "REFERENCE",
+    NEWS = "NEWS",
+    WORKFLOW = "WORKFLOW",
+    DATA = "DATA",
+    OTHER = "OTHER",
+    HGPHYLOPLACE = "HGPHYLOPLACE",
+};
+/**
+* Set of IDs of workflow categories.
+*/
+export enum WorkflowCategoryId {
+    
+    VARIANT_CALLING = "VARIANT_CALLING",
+    TRANSCRIPTOMICS = "TRANSCRIPTOMICS",
+    REGULATION = "REGULATION",
+    ASSEMBLY = "ASSEMBLY",
+    GENOME_COMPARISONS = "GENOME_COMPARISONS",
+    PROTEIN_FOLDING = "PROTEIN_FOLDING",
+    CONSENSUS_SEQUENCES = "CONSENSUS_SEQUENCES",
+    ANNOTATION = "ANNOTATION",
+    COMPARATIVE_GENOMICS = "COMPARATIVE_GENOMICS",
+    OTHER = "OTHER",
+};
+/**
+* Galaxy collection types supported for collection_spec in workflow parameters.
+Currently only 'list' collections are supported, which represent a simple ordered list of datasets.
+*/
+export enum CollectionType {
+    
+    /** A simple ordered list of datasets. Each element in the collection is a separate dataset. */
+    list = "list",
+};
+/**
+* Possible variables that can be inserted into workflow parameters.
+*/
+export enum WorkflowParameterVariable {
+    
+    ASSEMBLY_ID = "ASSEMBLY_ID",
+    ASSEMBLY_FASTA_URL = "ASSEMBLY_FASTA_URL",
+    FASTA_COLLECTION = "FASTA_COLLECTION",
+    GENE_MODEL_URL = "GENE_MODEL_URL",
+    SANGER_READ_RUN_FORWARD_FILE = "SANGER_READ_RUN_FORWARD_FILE",
+    SANGER_READ_RUN_PAIRED = "SANGER_READ_RUN_PAIRED",
+    SANGER_READ_RUN_REVERSE_FILE = "SANGER_READ_RUN_REVERSE_FILE",
+    SANGER_READ_RUN_SINGLE = "SANGER_READ_RUN_SINGLE",
+    SANGER_READ_RUN_SINGLE_FILE = "SANGER_READ_RUN_SINGLE_FILE",
+};
+/**
+* Possible ploidies supported by workflows.
+*/
+export enum WorkflowPloidy {
+    
+    ANY = "ANY",
+    DIPLOID = "DIPLOID",
+    HAPLOID = "HAPLOID",
+    POLYPLOID = "POLYPLOID",
+};
+/**
+* The scope level at which a workflow operates, determining its display context and required inputs.
+*/
+export enum WorkflowScope {
+    
+    /** Workflow operates on a specific genome assembly and requires assembly selection as the first step. */
+    ASSEMBLY = "ASSEMBLY",
+    /** Workflow operates at the organism level, either requiring no specific assembly or working across multiple assemblies. */
+    ORGANISM = "ORGANISM",
+    /** Workflow operates on a user-provided sequence (e.g., single gene) rather than a full genome assembly. */
+    SEQUENCE = "SEQUENCE",
+};
 
 
 /**
@@ -282,6 +282,53 @@ export interface Outbreak {
     active: boolean,
     /** List of NCBI Taxonomy IDs for descendant taxa (e.g., specific strains or serotypes) that should be highlighted within the outbreak category. */
     highlight_descendant_taxonomy_ids?: number[] | null,
+    /** Optional pre-computed workflow results for this pathogen, including how to discover eligible runs and where the published results are. */
+    precomputed?: PrecomputedResults | null,
+}
+
+
+/**
+ * Pre-computed results of a workflow run on public data for a pathogen.
+ */
+export interface PrecomputedResults {
+    /** The TRS ID of the workflow (including version) used to compute the results. */
+    workflow_trs_id: string,
+    /** Criteria for discovering public sequencing runs to process. If omitted, runs are not discovered automatically. */
+    discovery?: PrecomputedDiscovery | null,
+    /** Details of the latest published results. If omitted, no results are shown. */
+    release?: PrecomputedRelease | null,
+}
+
+
+/**
+ * Criteria for discovering public sequencing runs to process with a workflow.
+ */
+export interface PrecomputedDiscovery {
+    /** The NCBI Taxonomy ID to discover runs for, if different from the taxonomy ID of the pathogen. */
+    taxonomy_id?: number | null,
+    /** The library layout that discovered runs must have. */
+    library_layout?: LibraryLayout | null,
+    /** The library strategy values that discovered runs may have. */
+    library_strategy?: LibraryStrategy[] | null,
+    /** The library source values that discovered runs may have. */
+    library_source?: LibrarySource[] | null,
+    /** The instrument platforms that discovered runs may have (e.g., 'ILLUMINA'). */
+    instrument_platform?: string[] | null,
+    /** Only runs first made public on or after this date (YYYY-MM-DD) are discovered. */
+    first_public_from?: string | null,
+}
+
+
+/**
+ * Details of a published set of pre-computed results.
+ */
+export interface PrecomputedRelease {
+    /** The complete URL (including http/https protocol) of the manifest describing the published results. */
+    manifest_url: string,
+    /** The date (YYYY-MM-DD) the results were last updated. */
+    last_updated: string,
+    /** The number of records in the published results. */
+    record_count?: number | null,
 }
 
 

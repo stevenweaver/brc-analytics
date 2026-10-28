@@ -119,6 +119,9 @@ export async function buildOutbreaks(): Promise<Outbreak[]> {
       highlight_descendant_taxonomy_ids:
         sourceOutbreak.highlight_descendant_taxonomy_ids ?? null,
       name: sourceOutbreak.name,
+      ...(sourceOutbreak.precomputed && {
+        precomputed: sourceOutbreak.precomputed,
+      }),
       priority: sourceOutbreak.priority,
       resources: sourceOutbreak.resources,
       taxonomy_id: sourceOutbreak.taxonomy_id,

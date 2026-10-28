@@ -7,6 +7,9 @@ prefixes:
 
 imports:
   - linkml:types
+  - enums/library_layout
+  - enums/library_source
+  - enums/library_strategy
   - enums/outbreak_priority
   - enums/outbreak_resource_type
 
@@ -53,6 +56,75 @@ classes:
         description: List of NCBI Taxonomy IDs for descendant taxa (e.g., specific strains or serotypes) that should be highlighted within the outbreak category.
         required: false
         multivalued: true
+        range: integer
+      precomputed:
+        description: Optional pre-computed workflow results for this pathogen, including how to discover eligible runs and where the published results are.
+        required: false
+        range: PrecomputedResults
+
+  PrecomputedResults:
+    description: Pre-computed results of a workflow run on public data for a pathogen.
+    attributes:
+      workflow_trs_id:
+        description: The TRS ID of the workflow (including version) used to compute the results.
+        required: true
+        range: string
+      discovery:
+        description: Criteria for discovering public sequencing runs to process. If omitted, runs are not discovered automatically.
+        required: false
+        range: PrecomputedDiscovery
+      release:
+        description: Details of the latest published results. If omitted, no results are shown.
+        required: false
+        range: PrecomputedRelease
+
+  PrecomputedDiscovery:
+    description: Criteria for discovering public sequencing runs to process with a workflow.
+    attributes:
+      taxonomy_id:
+        description: The NCBI Taxonomy ID to discover runs for, if different from the taxonomy ID of the pathogen.
+        required: false
+        range: integer
+      library_layout:
+        description: The library layout that discovered runs must have.
+        required: false
+        range: LibraryLayout
+      library_strategy:
+        description: The library strategy values that discovered runs may have.
+        required: false
+        multivalued: true
+        range: LibraryStrategy
+      library_source:
+        description: The library source values that discovered runs may have.
+        required: false
+        multivalued: true
+        range: LibrarySource
+      instrument_platform:
+        description: The instrument platforms that discovered runs may have (e.g., 'ILLUMINA').
+        required: false
+        multivalued: true
+        range: string
+      first_public_from:
+        description: Only runs first made public on or after this date (YYYY-MM-DD) are discovered.
+        required: false
+        range: string
+        pattern: '^\d{4}-\d{2}-\d{2}$'
+
+  PrecomputedRelease:
+    description: Details of a published set of pre-computed results.
+    attributes:
+      manifest_url:
+        description: The complete URL (including http/https protocol) of the manifest describing the published results.
+        required: true
+        range: string
+      last_updated:
+        description: The date (YYYY-MM-DD) the results were last updated.
+        required: true
+        range: string
+        pattern: '^\d{4}-\d{2}-\d{2}$'
+      record_count:
+        description: The number of records in the published results.
+        required: false
         range: integer
 
   OutbreakResource:

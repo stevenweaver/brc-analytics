@@ -1,5 +1,78 @@
 {
     "$defs": {
+        "LibraryLayout": {
+            "description": "Enumeration of possible library layouts for sequencing data.",
+            "enum": [
+                "PAIRED",
+                "SINGLE"
+            ],
+            "title": "LibraryLayout",
+            "type": "string"
+        },
+        "LibrarySource": {
+            "description": "Enumeration of possible library sources for sequencing data.",
+            "enum": [
+                "GENOMIC",
+                "GENOMIC SINGLE CELL",
+                "TRANSCRIPTOMIC",
+                "TRANSCRIPTOMIC SINGLE CELL",
+                "METAGENOMIC",
+                "METATRANSCRIPTOMIC",
+                "SYNTHETIC",
+                "VIRAL RNA",
+                "OTHER"
+            ],
+            "title": "LibrarySource",
+            "type": "string"
+        },
+        "LibraryStrategy": {
+            "description": "Enumeration of possible library strategies for sequencing data.",
+            "enum": [
+                "WGS",
+                "WGA",
+                "WXS",
+                "RNA-Seq",
+                "snRNA-seq",
+                "ssRNA-seq",
+                "miRNA-Seq",
+                "ncRNA-Seq",
+                "FL-cDNA",
+                "EST",
+                "Hi-C",
+                "ATAC-seq",
+                "WCS",
+                "RAD-Seq",
+                "CLONE",
+                "POOLCLONE",
+                "AMPLICON",
+                "CLONEEND",
+                "FINISHING",
+                "ChIP-Seq",
+                "MNase-Seq",
+                "Ribo-Seq",
+                "DNase-Hypersensitivity",
+                "Bisulfite-Seq",
+                "CTS",
+                "ChM-Seq",
+                "GBS",
+                "MRE-Seq",
+                "MeDIP-Seq",
+                "MBD-Seq",
+                "NOMe-Seq",
+                "Tn-Seq",
+                "VALIDATION",
+                "FAIRE-seq",
+                "SELEX",
+                "RIP-Seq",
+                "ChIA-PET",
+                "Synthetic-Long-Read",
+                "Targeted-Capture",
+                "Tethered Chromatin Conformation Capture",
+                "OTHER"
+            ],
+            "title": "LibraryStrategy",
+            "type": "string"
+        },
         "MarkdownFileReference": {
             "additionalProperties": false,
             "description": "A reference to a markdown file containing detailed content about a priority pathogen.",
@@ -41,6 +114,17 @@
                 "name": {
                     "description": "The display name of the pathogen as it will appear in the BRC Analytics interface.",
                     "type": "string"
+                },
+                "precomputed": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PrecomputedResults"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Optional pre-computed workflow results for this pathogen, including how to discover eligible runs and where the published results are."
                 },
                 "priority": {
                     "$ref": "#/$defs/OutbreakPriority",
@@ -136,6 +220,128 @@
                 "outbreaks"
             ],
             "title": "Outbreaks",
+            "type": "object"
+        },
+        "PrecomputedDiscovery": {
+            "additionalProperties": false,
+            "description": "Criteria for discovering public sequencing runs to process with a workflow.",
+            "properties": {
+                "first_public_from": {
+                    "description": "Only runs first made public on or after this date (YYYY-MM-DD) are discovered.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_platform": {
+                    "description": "The instrument platforms that discovered runs may have (e.g., 'ILLUMINA').",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "library_layout": {
+                    "$ref": "#/$defs/LibraryLayout",
+                    "description": "The library layout that discovered runs must have."
+                },
+                "library_source": {
+                    "description": "The library source values that discovered runs may have.",
+                    "items": {
+                        "$ref": "#/$defs/LibrarySource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "library_strategy": {
+                    "description": "The library strategy values that discovered runs may have.",
+                    "items": {
+                        "$ref": "#/$defs/LibraryStrategy"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "taxonomy_id": {
+                    "description": "The NCBI Taxonomy ID to discover runs for, if different from the taxonomy ID of the pathogen.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PrecomputedDiscovery",
+            "type": "object"
+        },
+        "PrecomputedRelease": {
+            "additionalProperties": false,
+            "description": "Details of a published set of pre-computed results.",
+            "properties": {
+                "last_updated": {
+                    "description": "The date (YYYY-MM-DD) the results were last updated.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "type": "string"
+                },
+                "manifest_url": {
+                    "description": "The complete URL (including http/https protocol) of the manifest describing the published results.",
+                    "type": "string"
+                },
+                "record_count": {
+                    "description": "The number of records in the published results.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "manifest_url",
+                "last_updated"
+            ],
+            "title": "PrecomputedRelease",
+            "type": "object"
+        },
+        "PrecomputedResults": {
+            "additionalProperties": false,
+            "description": "Pre-computed results of a workflow run on public data for a pathogen.",
+            "properties": {
+                "discovery": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PrecomputedDiscovery"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Criteria for discovering public sequencing runs to process. If omitted, runs are not discovered automatically."
+                },
+                "release": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PrecomputedRelease"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Details of the latest published results. If omitted, no results are shown."
+                },
+                "workflow_trs_id": {
+                    "description": "The TRS ID of the workflow (including version) used to compute the results.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "workflow_trs_id"
+            ],
+            "title": "PrecomputedResults",
             "type": "object"
         }
     },

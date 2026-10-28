@@ -87,92 +87,6 @@ class OrganismPloidy(str, Enum):
     POLYPLOID = "POLYPLOID"
 
 
-class OutbreakPriority(str, Enum):
-    """
-    Possible priorities of an outbreak.
-    """
-    HIGHEST = "HIGHEST"
-    CRITICAL = "CRITICAL"
-    HIGH = "HIGH"
-    MODERATE_HIGH = "MODERATE_HIGH"
-    MODERATE = "MODERATE"
-
-
-class OutbreakResourceType(str, Enum):
-    """
-    Possible types of an outbreak resource.
-    """
-    PUBLICATION = "PUBLICATION"
-    REFERENCE = "REFERENCE"
-    NEWS = "NEWS"
-    WORKFLOW = "WORKFLOW"
-    DATA = "DATA"
-    OTHER = "OTHER"
-    HGPHYLOPLACE = "HGPHYLOPLACE"
-
-
-class WorkflowCategoryId(str, Enum):
-    """
-    Set of IDs of workflow categories.
-    """
-    VARIANT_CALLING = "VARIANT_CALLING"
-    TRANSCRIPTOMICS = "TRANSCRIPTOMICS"
-    REGULATION = "REGULATION"
-    ASSEMBLY = "ASSEMBLY"
-    GENOME_COMPARISONS = "GENOME_COMPARISONS"
-    PROTEIN_FOLDING = "PROTEIN_FOLDING"
-    CONSENSUS_SEQUENCES = "CONSENSUS_SEQUENCES"
-    ANNOTATION = "ANNOTATION"
-    COMPARATIVE_GENOMICS = "COMPARATIVE_GENOMICS"
-    OTHER = "OTHER"
-
-
-class CollectionType(str, Enum):
-    """
-    Galaxy collection types supported for collection_spec in workflow parameters.
-Currently only 'list' collections are supported, which represent a simple ordered list of datasets.
-    """
-    # A simple ordered list of datasets. Each element in the collection is a separate dataset.
-    list = "list"
-
-
-class WorkflowParameterVariable(str, Enum):
-    """
-    Possible variables that can be inserted into workflow parameters.
-    """
-    ASSEMBLY_ID = "ASSEMBLY_ID"
-    ASSEMBLY_FASTA_URL = "ASSEMBLY_FASTA_URL"
-    FASTA_COLLECTION = "FASTA_COLLECTION"
-    GENE_MODEL_URL = "GENE_MODEL_URL"
-    SANGER_READ_RUN_FORWARD_FILE = "SANGER_READ_RUN_FORWARD_FILE"
-    SANGER_READ_RUN_PAIRED = "SANGER_READ_RUN_PAIRED"
-    SANGER_READ_RUN_REVERSE_FILE = "SANGER_READ_RUN_REVERSE_FILE"
-    SANGER_READ_RUN_SINGLE = "SANGER_READ_RUN_SINGLE"
-    SANGER_READ_RUN_SINGLE_FILE = "SANGER_READ_RUN_SINGLE_FILE"
-
-
-class WorkflowPloidy(str, Enum):
-    """
-    Possible ploidies supported by workflows.
-    """
-    ANY = "ANY"
-    DIPLOID = "DIPLOID"
-    HAPLOID = "HAPLOID"
-    POLYPLOID = "POLYPLOID"
-
-
-class WorkflowScope(str, Enum):
-    """
-    The scope level at which a workflow operates, determining its display context and required inputs.
-    """
-    # Workflow operates on a specific genome assembly and requires assembly selection as the first step.
-    ASSEMBLY = "ASSEMBLY"
-    # Workflow operates at the organism level, either requiring no specific assembly or working across multiple assemblies.
-    ORGANISM = "ORGANISM"
-    # Workflow operates on a user-provided sequence (e.g., single gene) rather than a full genome assembly.
-    SEQUENCE = "SEQUENCE"
-
-
 class LibraryLayout(str, Enum):
     """
     Enumeration of possible library layouts for sequencing data.
@@ -295,6 +209,92 @@ class LibraryStrategy(str, Enum):
     OTHER = "OTHER"
 
 
+class OutbreakPriority(str, Enum):
+    """
+    Possible priorities of an outbreak.
+    """
+    HIGHEST = "HIGHEST"
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MODERATE_HIGH = "MODERATE_HIGH"
+    MODERATE = "MODERATE"
+
+
+class OutbreakResourceType(str, Enum):
+    """
+    Possible types of an outbreak resource.
+    """
+    PUBLICATION = "PUBLICATION"
+    REFERENCE = "REFERENCE"
+    NEWS = "NEWS"
+    WORKFLOW = "WORKFLOW"
+    DATA = "DATA"
+    OTHER = "OTHER"
+    HGPHYLOPLACE = "HGPHYLOPLACE"
+
+
+class WorkflowCategoryId(str, Enum):
+    """
+    Set of IDs of workflow categories.
+    """
+    VARIANT_CALLING = "VARIANT_CALLING"
+    TRANSCRIPTOMICS = "TRANSCRIPTOMICS"
+    REGULATION = "REGULATION"
+    ASSEMBLY = "ASSEMBLY"
+    GENOME_COMPARISONS = "GENOME_COMPARISONS"
+    PROTEIN_FOLDING = "PROTEIN_FOLDING"
+    CONSENSUS_SEQUENCES = "CONSENSUS_SEQUENCES"
+    ANNOTATION = "ANNOTATION"
+    COMPARATIVE_GENOMICS = "COMPARATIVE_GENOMICS"
+    OTHER = "OTHER"
+
+
+class CollectionType(str, Enum):
+    """
+    Galaxy collection types supported for collection_spec in workflow parameters.
+Currently only 'list' collections are supported, which represent a simple ordered list of datasets.
+    """
+    # A simple ordered list of datasets. Each element in the collection is a separate dataset.
+    list = "list"
+
+
+class WorkflowParameterVariable(str, Enum):
+    """
+    Possible variables that can be inserted into workflow parameters.
+    """
+    ASSEMBLY_ID = "ASSEMBLY_ID"
+    ASSEMBLY_FASTA_URL = "ASSEMBLY_FASTA_URL"
+    FASTA_COLLECTION = "FASTA_COLLECTION"
+    GENE_MODEL_URL = "GENE_MODEL_URL"
+    SANGER_READ_RUN_FORWARD_FILE = "SANGER_READ_RUN_FORWARD_FILE"
+    SANGER_READ_RUN_PAIRED = "SANGER_READ_RUN_PAIRED"
+    SANGER_READ_RUN_REVERSE_FILE = "SANGER_READ_RUN_REVERSE_FILE"
+    SANGER_READ_RUN_SINGLE = "SANGER_READ_RUN_SINGLE"
+    SANGER_READ_RUN_SINGLE_FILE = "SANGER_READ_RUN_SINGLE_FILE"
+
+
+class WorkflowPloidy(str, Enum):
+    """
+    Possible ploidies supported by workflows.
+    """
+    ANY = "ANY"
+    DIPLOID = "DIPLOID"
+    HAPLOID = "HAPLOID"
+    POLYPLOID = "POLYPLOID"
+
+
+class WorkflowScope(str, Enum):
+    """
+    The scope level at which a workflow operates, determining its display context and required inputs.
+    """
+    # Workflow operates on a specific genome assembly and requires assembly selection as the first step.
+    ASSEMBLY = "ASSEMBLY"
+    # Workflow operates at the organism level, either requiring no specific assembly or working across multiple assemblies.
+    ORGANISM = "ORGANISM"
+    # Workflow operates on a user-provided sequence (e.g., single gene) rather than a full genome assembly.
+    SEQUENCE = "SEQUENCE"
+
+
 
 class Assemblies(ConfiguredBaseModel):
     """
@@ -332,7 +332,11 @@ class Organism(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/organisms.yaml#'})
 
     taxonomy_id: int = Field(default=..., description="""An NCBI Taxonomy ID at rank 'species'.""", json_schema_extra = { "linkml_meta": {'alias': 'taxonomy_id',
-         'domain_of': ['Organism', 'Outbreak', 'Taxon', 'Workflow']} })
+         'domain_of': ['Organism',
+                       'Outbreak',
+                       'PrecomputedDiscovery',
+                       'Taxon',
+                       'Workflow']} })
     ploidy: List[OrganismPloidy] = Field(default=..., description="""The possible ploidy states (number of chromosome sets) that the organism may have, which determines compatible workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'ploidy', 'domain_of': ['Organism', 'Workflow']} })
 
 
@@ -355,13 +359,86 @@ class Outbreak(ConfiguredBaseModel):
     name: str = Field(default=..., description="""The display name of the pathogen as it will appear in the BRC Analytics interface.""", json_schema_extra = { "linkml_meta": {'alias': 'name',
          'domain_of': ['Outbreak', 'WorkflowCategory', 'WorkflowCollectionSpec']} })
     taxonomy_id: int = Field(default=..., description="""The NCBI Taxonomy ID for the pathogen. Used to link to relevant genomic data and workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'taxonomy_id',
-         'domain_of': ['Organism', 'Outbreak', 'Taxon', 'Workflow']} })
+         'domain_of': ['Organism',
+                       'Outbreak',
+                       'PrecomputedDiscovery',
+                       'Taxon',
+                       'Workflow']} })
     priority: OutbreakPriority = Field(default=..., description="""The priority level of the pathogen, which determines its visibility and prominence in the BRC Analytics interface.""", json_schema_extra = { "linkml_meta": {'alias': 'priority', 'domain_of': ['Outbreak']} })
     resources: List[OutbreakResource] = Field(default=..., description="""Collection of external resources (references, tools, databases) related to the pathogen.""", json_schema_extra = { "linkml_meta": {'alias': 'resources', 'domain_of': ['Outbreak']} })
     description: MarkdownFileReference = Field(default=..., description="""Reference to a markdown file containing detailed information about the pathogen.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['Outbreak', 'WorkflowCategory', 'WorkflowDataRequirements']} })
     active: bool = Field(default=..., description="""Boolean flag that determines if the pathogen should be included in the BRC Analytics interface. Used to manage visibility as pathogen relevance changes over time.""", json_schema_extra = { "linkml_meta": {'alias': 'active', 'domain_of': ['Outbreak', 'Workflow']} })
     highlight_descendant_taxonomy_ids: Optional[List[int]] = Field(default=None, description="""List of NCBI Taxonomy IDs for descendant taxa (e.g., specific strains or serotypes) that should be highlighted within the outbreak category.""", json_schema_extra = { "linkml_meta": {'alias': 'highlight_descendant_taxonomy_ids', 'domain_of': ['Outbreak']} })
+    precomputed: Optional[PrecomputedResults] = Field(default=None, description="""Optional pre-computed workflow results for this pathogen, including how to discover eligible runs and where the published results are.""", json_schema_extra = { "linkml_meta": {'alias': 'precomputed', 'domain_of': ['Outbreak']} })
+
+
+class PrecomputedResults(ConfiguredBaseModel):
+    """
+    Pre-computed results of a workflow run on public data for a pathogen.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/outbreaks.yaml#'})
+
+    workflow_trs_id: str = Field(default=..., description="""The TRS ID of the workflow (including version) used to compute the results.""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_trs_id', 'domain_of': ['PrecomputedResults']} })
+    discovery: Optional[PrecomputedDiscovery] = Field(default=None, description="""Criteria for discovering public sequencing runs to process. If omitted, runs are not discovered automatically.""", json_schema_extra = { "linkml_meta": {'alias': 'discovery', 'domain_of': ['PrecomputedResults']} })
+    release: Optional[PrecomputedRelease] = Field(default=None, description="""Details of the latest published results. If omitted, no results are shown.""", json_schema_extra = { "linkml_meta": {'alias': 'release', 'domain_of': ['PrecomputedResults']} })
+
+
+class PrecomputedDiscovery(ConfiguredBaseModel):
+    """
+    Criteria for discovering public sequencing runs to process with a workflow.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/outbreaks.yaml#'})
+
+    taxonomy_id: Optional[int] = Field(default=None, description="""The NCBI Taxonomy ID to discover runs for, if different from the taxonomy ID of the pathogen.""", json_schema_extra = { "linkml_meta": {'alias': 'taxonomy_id',
+         'domain_of': ['Organism',
+                       'Outbreak',
+                       'PrecomputedDiscovery',
+                       'Taxon',
+                       'Workflow']} })
+    library_layout: Optional[LibraryLayout] = Field(default=None, description="""The library layout that discovered runs must have.""", json_schema_extra = { "linkml_meta": {'alias': 'library_layout',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
+    library_strategy: Optional[List[LibraryStrategy]] = Field(default=None, description="""The library strategy values that discovered runs may have.""", json_schema_extra = { "linkml_meta": {'alias': 'library_strategy',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
+    library_source: Optional[List[LibrarySource]] = Field(default=None, description="""The library source values that discovered runs may have.""", json_schema_extra = { "linkml_meta": {'alias': 'library_source',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
+    instrument_platform: Optional[List[str]] = Field(default=None, description="""The instrument platforms that discovered runs may have (e.g., 'ILLUMINA').""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_platform', 'domain_of': ['PrecomputedDiscovery']} })
+    first_public_from: Optional[str] = Field(default=None, description="""Only runs first made public on or after this date (YYYY-MM-DD) are discovered.""", json_schema_extra = { "linkml_meta": {'alias': 'first_public_from', 'domain_of': ['PrecomputedDiscovery']} })
+
+    @field_validator('first_public_from')
+    def pattern_first_public_from(cls, v):
+        pattern=re.compile(r"^\d{4}-\d{2}-\d{2}$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid first_public_from format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid first_public_from format: {v}")
+        return v
+
+
+class PrecomputedRelease(ConfiguredBaseModel):
+    """
+    Details of a published set of pre-computed results.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/outbreaks.yaml#'})
+
+    manifest_url: str = Field(default=..., description="""The complete URL (including http/https protocol) of the manifest describing the published results.""", json_schema_extra = { "linkml_meta": {'alias': 'manifest_url', 'domain_of': ['PrecomputedRelease']} })
+    last_updated: str = Field(default=..., description="""The date (YYYY-MM-DD) the results were last updated.""", json_schema_extra = { "linkml_meta": {'alias': 'last_updated', 'domain_of': ['PrecomputedRelease']} })
+    record_count: Optional[int] = Field(default=None, description="""The number of records in the published results.""", json_schema_extra = { "linkml_meta": {'alias': 'record_count', 'domain_of': ['PrecomputedRelease']} })
+
+    @field_validator('last_updated')
+    def pattern_last_updated(cls, v):
+        pattern=re.compile(r"^\d{4}-\d{2}-\d{2}$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid last_updated format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid last_updated format: {v}")
+        return v
 
 
 class OutbreakResource(ConfiguredBaseModel):
@@ -432,7 +509,11 @@ class Taxon(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/taxa.yaml#'})
 
     taxonomy_id: int = Field(default=..., description="""An NCBI Taxonomy ID at any rank. In particular, this may be an infraspecific taxon, which `Organism.taxonomy_id` cannot express; SARS-CoV-2 (2697049) is the motivating case, sitting below its species in NCBI's taxonomy while the catalog's organism is the species.""", json_schema_extra = { "linkml_meta": {'alias': 'taxonomy_id',
-         'domain_of': ['Organism', 'Outbreak', 'Taxon', 'Workflow']} })
+         'domain_of': ['Organism',
+                       'Outbreak',
+                       'PrecomputedDiscovery',
+                       'Taxon',
+                       'Workflow']} })
     other_names: List[str] = Field(default=..., description="""Curated alternative names for the taxon, such as abbreviations and colloquial names that NCBI doesn't supply. Merged into the taxon's NCBI-derived other names in the built catalog. Should be given as display forms; consumers are responsible for normalizing case and punctuation as appropriate.""", json_schema_extra = { "linkml_meta": {'alias': 'other_names', 'domain_of': ['Taxon']} })
 
 
@@ -485,7 +566,11 @@ class Workflow(ConfiguredBaseModel):
     assembly_count_min: Optional[int] = Field(default=None, description="""The minimum number of genome assemblies a user must select for this workflow. Defaults to 1 for ASSEMBLY-scope workflows; must be set explicitly for ORGANISM and SEQUENCE scope. Use 0 for workflows that take no user-selected assemblies (e.g. assembly-building or curated-FASTA workflows).""", json_schema_extra = { "linkml_meta": {'alias': 'assembly_count_min', 'domain_of': ['Workflow']} })
     assembly_count_max: Optional[int] = Field(default=None, description="""The maximum number of genome assemblies a user may select for this workflow. Null/absent means no upper limit. Defaults to 1 for ASSEMBLY-scope workflows; must be set explicitly for ORGANISM and SEQUENCE scope.""", json_schema_extra = { "linkml_meta": {'alias': 'assembly_count_max', 'domain_of': ['Workflow']} })
     taxonomy_id: Optional[int] = Field(default=None, description="""The NCBI Taxonomy ID of the organism this workflow is designed for. If specified, the workflow will be available for all assemblies with this ID in their taxonomic lineage.""", json_schema_extra = { "linkml_meta": {'alias': 'taxonomy_id',
-         'domain_of': ['Organism', 'Outbreak', 'Taxon', 'Workflow']} })
+         'domain_of': ['Organism',
+                       'Outbreak',
+                       'PrecomputedDiscovery',
+                       'Taxon',
+                       'Workflow']} })
     parameters: List[WorkflowParameter] = Field(default=..., description="""Collection of input parameters that will be passed to the workflow when it is executed, including data sources and configuration options.""", json_schema_extra = { "linkml_meta": {'alias': 'parameters', 'domain_of': ['Workflow']} })
     active: bool = Field(default=..., description="""Boolean flag that determines if the workflow should be included in the BRC Analytics interface. Used to manage visibility of workflows that may be under development or deprecated.""", json_schema_extra = { "linkml_meta": {'alias': 'active', 'domain_of': ['Outbreak', 'Workflow']} })
     iwc_id: str = Field(default=..., description="""The Intergalactic Workflow Commission (IWC) identifier for the workflow, used to link to the workflow's page on the IWC website.""", json_schema_extra = { "linkml_meta": {'alias': 'iwc_id', 'domain_of': ['Workflow']} })
@@ -497,9 +582,12 @@ class WorkflowDataRequirements(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/workflows.yaml#'})
 
-    library_strategy: Optional[List[LibraryStrategy]] = Field(default=None, description="""The library strategy values that are acceptable for this parameter (e.g., 'WGS', 'RNA-Seq').""", json_schema_extra = { "linkml_meta": {'alias': 'library_strategy', 'domain_of': ['WorkflowDataRequirements']} })
-    library_layout: Optional[LibraryLayout] = Field(default=None, description="""The library layout that is required for this parameter (e.g., 'PAIRED', 'SINGLE').""", json_schema_extra = { "linkml_meta": {'alias': 'library_layout', 'domain_of': ['WorkflowDataRequirements']} })
-    library_source: Optional[List[LibrarySource]] = Field(default=None, description="""The library source values that are acceptable for this parameter (e.g., 'GENOMIC', 'TRANSCRIPTOMIC SINGLE CELL').""", json_schema_extra = { "linkml_meta": {'alias': 'library_source', 'domain_of': ['WorkflowDataRequirements']} })
+    library_strategy: Optional[List[LibraryStrategy]] = Field(default=None, description="""The library strategy values that are acceptable for this parameter (e.g., 'WGS', 'RNA-Seq').""", json_schema_extra = { "linkml_meta": {'alias': 'library_strategy',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
+    library_layout: Optional[LibraryLayout] = Field(default=None, description="""The library layout that is required for this parameter (e.g., 'PAIRED', 'SINGLE').""", json_schema_extra = { "linkml_meta": {'alias': 'library_layout',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
+    library_source: Optional[List[LibrarySource]] = Field(default=None, description="""The library source values that are acceptable for this parameter (e.g., 'GENOMIC', 'TRANSCRIPTOMIC SINGLE CELL').""", json_schema_extra = { "linkml_meta": {'alias': 'library_source',
+         'domain_of': ['PrecomputedDiscovery', 'WorkflowDataRequirements']} })
     description: Optional[str] = Field(default=None, description="""A descriptive text to provide additional context about the data requirements, useful for non-standard library strategies like 'OTHER'.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['Outbreak', 'WorkflowCategory', 'WorkflowDataRequirements']} })
 
@@ -567,6 +655,9 @@ Organisms.model_rebuild()
 Organism.model_rebuild()
 Outbreaks.model_rebuild()
 Outbreak.model_rebuild()
+PrecomputedResults.model_rebuild()
+PrecomputedDiscovery.model_rebuild()
+PrecomputedRelease.model_rebuild()
 OutbreakResource.model_rebuild()
 MarkdownFileReference.model_rebuild()
 Pangenomes.model_rebuild()
