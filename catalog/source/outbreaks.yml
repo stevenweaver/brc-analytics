@@ -34,7 +34,7 @@ outbreaks:
       workflow_trs_id: "#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.5"
       discovery:
         library_layout: PAIRED
-        library_strategy: [WGS]
+        library_strategy: [WGS, AMPLICON]
         library_source: [VIRAL RNA]
         instrument_platform: [ILLUMINA]
         first_public_from: "2024-01-01"

@@ -12,7 +12,8 @@
       "discovery": {
         "library_layout": "PAIRED",
         "library_strategy": [
-          "WGS"
+          "WGS",
+          "AMPLICON"
         ],
         "library_source": [
           "VIRAL RNA"
