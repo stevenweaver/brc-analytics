@@ -8,6 +8,7 @@ import { ROUTES as SITE_ROUTES } from "@brc/routes/constants";
 import { type BRCOrganismDetail } from "@brc/services/staticGeneration/organism/types";
 import { type Main as OrganismViewMain } from "@brc/views/OrganismView/components/Main/main";
 import { Tabs } from "@brc/views/OrganismView/components/Tabs/tabs";
+import { type PrecomputedSection } from "@brc/views/PriorityPathogenView/components/PrecomputedSection/precomputedSection";
 import { type ResourcesSection } from "@brc/views/PriorityPathogenView/components/ResourcesSection/resourcesSection";
 import { type MDXSection } from "@brc/views/PriorityPathogenView/ui/Section/MDXSection/mdxSection";
 import { type Breadcrumb } from "@databiosphere/findable-ui/lib/components/common/Breadcrumbs/breadcrumbs";
@@ -445,6 +446,20 @@ export const buildPriorityPathogenResources = (
   return {
     resources: priorityPathogen.resources,
     title: "Resources",
+  };
+};
+
+/**
+ * Build props for the PrecomputedSection component.
+ * @param priorityPathogen - Priority pathogen entity.
+ * @returns Props to be used for the PrecomputedSection component.
+ */
+export const buildPriorityPathogenPrecomputed = (
+  priorityPathogen: Outbreak
+): ComponentProps<typeof PrecomputedSection> => {
+  return {
+    precomputed: priorityPathogen.precomputed,
+    title: "Pre-computed Results",
   };
 };
 
