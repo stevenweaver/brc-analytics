@@ -30,6 +30,14 @@ outbreaks:
       - title: "hgPhyloPlace: Place your sequences in a global phylogenetic tree (H5N1 D1.1 2024)"
         url: "https://genome.ucsc.edu/cgi-bin/hgPhyloPlace?hgpp_org=h5n1_D1.1_2024"
         type: HGPHYLOPLACE
+    precomputed:
+      workflow_trs_id: "#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.5"
+      discovery:
+        library_layout: PAIRED
+        library_strategy: [WGS]
+        library_source: [VIRAL RNA]
+        instrument_platform: [ILLUMINA]
+        first_public_from: "2024-01-01"
 
   - name: SARS-CoV-2
     taxonomy_id: 3418604

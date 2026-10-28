@@ -7,6 +7,22 @@
     },
     "highlight_descendant_taxonomy_ids": null,
     "name": "Avian Influenza",
+    "precomputed": {
+      "workflow_trs_id": "#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.5",
+      "discovery": {
+        "library_layout": "PAIRED",
+        "library_strategy": [
+          "WGS"
+        ],
+        "library_source": [
+          "VIRAL RNA"
+        ],
+        "instrument_platform": [
+          "ILLUMINA"
+        ],
+        "first_public_from": "2024-01-01"
+      }
+    },
     "priority": "MODERATE",
     "resources": [
       {
