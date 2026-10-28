@@ -364,7 +364,7 @@ test.describe("Workflow Stepper", () => {
 // organism-scope workflow (influenza isolate subtyping / consensus generation).
 const ORGANISM_ENTITY_ID = "2955291";
 const ORGANISM_TRS_ID =
-  "workflow-github-com-iwc-workflows-influenza-isolates-consensus-and-subtyping-main-versions-v0-3";
+  "workflow-github-com-iwc-workflows-influenza-isolates-consensus-and-subtyping-main-versions-v0-5";
 
 test.describe("Organism workflow route", () => {
   test("should render the configure inputs view for an organism trsId deep-link", async ({

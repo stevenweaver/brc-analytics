@@ -59,7 +59,7 @@
 - COVID-19: variation analysis on ARTIC PE data (#workflow/github.com/iwc-workflows/sars-cov-2-pe-illumina-artic-variant-calling/COVID-19-PE-ARTIC-ILLUMINA/versions/v0.5.5): taxonomy ID not found in any assembly's lineage
 - COVID-19: variation analysis on WGS PE data (#workflow/github.com/iwc-workflows/sars-cov-2-pe-illumina-wgs-variant-calling/COVID-19-PE-WGS-ILLUMINA/versions/v0.2.4): taxonomy ID not found in any assembly's lineage
 - COVID-19: variation analysis on WGS SE data (#workflow/github.com/iwc-workflows/sars-cov-2-se-illumina-wgs-variant-calling/COVID-19-SE-WGS-ILLUMINA/versions/v0.1.6): taxonomy ID not found in any assembly's lineage
-- Influenza A isolate subtyping and consensus sequence generation (#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.3): taxonomy ID not found in any assembly's lineage
+- Influenza A isolate subtyping and consensus sequence generation (#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.5): taxonomy ID not found in any assembly's lineage
 - Pox Virus Illumina Amplicon Workflow from half-genomes (#workflow/github.com/iwc-workflows/pox-virus-amplicon/main/versions/v0.4): taxonomy ID not found in any assembly's lineage
 - AMR Gene Detection (#workflow/github.com/iwc-workflows/amr_gene_detection/main/versions/v1.1.7): taxonomy ID not found in any assembly's lineage
 - Bacterial Genome Annotation (#workflow/github.com/iwc-workflows/bacterial_genome_annotation/main/versions/v1.2.0): taxonomy ID not found in any assembly's lineage
