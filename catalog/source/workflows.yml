@@ -1016,7 +1016,7 @@ workflows:
           ext: fasta
     active: false
     iwc_id: hyphy-hyphy-preprocessing
-  - trs_id: "#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.3"
+  - trs_id: "#workflow/github.com/iwc-workflows/influenza-isolates-consensus-and-subtyping/main/versions/v0.5"
     categories:
       - CONSENSUS_SEQUENCES
     workflow_name: Influenza A isolate subtyping and consensus sequence generation
