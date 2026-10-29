@@ -38,6 +38,10 @@ outbreaks:
         library_source: [VIRAL RNA]
         instrument_platform: [ILLUMINA]
         first_public_from: "2024-01-01"
+      release:
+        manifest_url: "http://localhost:8765/avian-influenza--influenza-isolates-consensus-and-subtyping/2026-10-28/manifest.json"
+        last_updated: "2026-10-28"
+        record_count: 11
 
   - name: SARS-CoV-2
     taxonomy_id: 3418604
