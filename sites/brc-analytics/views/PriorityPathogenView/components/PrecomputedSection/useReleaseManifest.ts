@@ -10,6 +10,7 @@ export interface ReleaseManifest {
   files: ReleaseFile[];
   runs: number;
   studies: string[];
+  thresholds: Record<string, number | string>;
   workflowVersion?: string;
 }
 
@@ -39,6 +40,7 @@ export function useReleaseManifest(
           })),
           runs: Array.isArray(data.runs) ? data.runs.length : 0,
           studies: Array.isArray(data.studies) ? data.studies : [],
+          thresholds: data.thresholds ?? {},
           workflowVersion: data.workflow?.version,
         });
       })

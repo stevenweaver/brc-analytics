@@ -107,4 +107,29 @@ describe("PrecomputedSection", () => {
       global.fetch = originalFetch;
     }
   });
+
+  test("names the producing workflow with version and IWC link", () => {
+    const precomputed = {
+      release: RELEASE,
+      workflow_trs_id: WORKFLOW_TRS_ID,
+    } as PrecomputedResults;
+    renderThemed(
+      <PrecomputedSection
+        precomputed={precomputed}
+        title="Results"
+        workflow={{
+          iwcId: "influenza-main",
+          workflowDescription: "Subtypes influenza.",
+          workflowName: "Influenza consensus",
+        }}
+      />
+    );
+    expect(screen.getByText("Produced by Galaxy workflow")).toBeInTheDocument();
+    expect(screen.getByText("Influenza consensus (v0.5)")).toBeInTheDocument();
+    expect(screen.getByText("Subtypes influenza.")).toBeInTheDocument();
+    expect(screen.getByText("IWC page")).toHaveAttribute(
+      "href",
+      "https://iwc.galaxyproject.org/workflow/influenza-main"
+    );
+  });
 });

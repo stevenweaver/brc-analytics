@@ -11,6 +11,7 @@ import { Tabs } from "@brc/views/OrganismView/components/Tabs/tabs";
 import { type PrecomputedSection } from "@brc/views/PriorityPathogenView/components/PrecomputedSection/precomputedSection";
 import { type ResourcesSection } from "@brc/views/PriorityPathogenView/components/ResourcesSection/resourcesSection";
 import { type MDXSection } from "@brc/views/PriorityPathogenView/ui/Section/MDXSection/mdxSection";
+import workflowCategories from "@catalog/output/workflows.json";
 import { type Breadcrumb } from "@databiosphere/findable-ui/lib/components/common/Breadcrumbs/breadcrumbs";
 import {
   type Key,
@@ -26,6 +27,7 @@ import { type NTagCell } from "@databiosphere/findable-ui/lib/components/Table/c
 import { CHIP_PROPS } from "@databiosphere/findable-ui/lib/styles/common/mui/chip";
 import { Chip } from "@mui/material";
 import type { OrganismContract } from "@repo/shared/apis/types";
+import type { WorkflowCategory } from "@repo/shared/apis/workflow";
 import { AppLink } from "@repo/shared/components/AppLink/appLink";
 import { FavoriteButton } from "@repo/shared/components/Favorites/components/FavoriteButton/favoriteButton";
 import { ScientificName } from "@repo/shared/components/ScientificName/scientificName";
@@ -457,9 +459,14 @@ export const buildPriorityPathogenResources = (
 export const buildPriorityPathogenPrecomputed = (
   priorityPathogen: Outbreak
 ): ComponentProps<typeof PrecomputedSection> => {
+  const trsId = priorityPathogen.precomputed?.workflow_trs_id;
+  const workflow = (workflowCategories as WorkflowCategory[])
+    .flatMap((category) => category.workflows)
+    .find((w) => w.trsId === trsId);
   return {
     precomputed: priorityPathogen.precomputed,
     title: "Pre-computed Results",
+    workflow,
   };
 };
 
