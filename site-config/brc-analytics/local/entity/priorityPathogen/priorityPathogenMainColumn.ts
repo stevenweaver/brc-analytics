@@ -10,6 +10,10 @@ import {
 
 export const priorityPathogenMainColumn: ComponentsConfig = [
   {
+    component: PrecomputedSection,
+    viewBuilder: V.buildPriorityPathogenPrecomputed,
+  } as ComponentConfig<typeof PrecomputedSection, Outbreak>,
+  {
     component: MDXSection,
     viewBuilder: V.buildPriorityPathogenDescription,
   } as ComponentConfig<typeof MDXSection, Outbreak>,
@@ -17,8 +21,4 @@ export const priorityPathogenMainColumn: ComponentsConfig = [
     component: ResourcesSection,
     viewBuilder: V.buildPriorityPathogenResources,
   } as ComponentConfig<typeof ResourcesSection, Outbreak>,
-  {
-    component: PrecomputedSection,
-    viewBuilder: V.buildPriorityPathogenPrecomputed,
-  } as ComponentConfig<typeof PrecomputedSection, Outbreak>,
 ];

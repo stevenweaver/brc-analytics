@@ -2,7 +2,7 @@ import { PrecomputedSection } from "@brc/views/PriorityPathogenView/components/P
 import type { PrecomputedResults } from "@catalog/schema/generated/schema";
 import { createAppTheme } from "@databiosphere/findable-ui/lib/theme/theme";
 import { ThemeProvider } from "@mui/material";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import type { ReactElement } from "react";
 // jest-dom matchers aren't registered globally in this repo's jest config;
 // opt in locally as the sibling view suites do.
@@ -74,5 +74,37 @@ describe("PrecomputedSection", () => {
       <PrecomputedSection precomputed={precomputed} title="Results" />
     );
     expect(screen.queryByText(/Records:/)).not.toBeInTheDocument();
+  });
+
+  test("lists manifest files resolved against the manifest URL", async () => {
+    const manifest = {
+      files: [{ bytes: 2048, path: "segments/HA.fasta" }],
+      runs: ["SRR1", "SRR2"],
+      studies: ["PRJNA1"],
+      workflow: { version: "v0.5" },
+    };
+    const originalFetch = global.fetch;
+    global.fetch = jest.fn().mockResolvedValue({
+      json: () => Promise.resolve(manifest),
+      ok: true,
+    }) as unknown as typeof fetch;
+    try {
+      const precomputed = {
+        release: RELEASE,
+        workflow_trs_id: WORKFLOW_TRS_ID,
+      } as PrecomputedResults;
+      renderThemed(
+        <PrecomputedSection precomputed={precomputed} title="Results" />
+      );
+      await waitFor(() =>
+        expect(screen.getByText("segments/HA.fasta (2.0 KB)")).toHaveAttribute(
+          "href",
+          "https://example.org/latest/segments/HA.fasta"
+        )
+      );
+      expect(screen.getByText("Studies: PRJNA1")).toBeInTheDocument();
+    } finally {
+      global.fetch = originalFetch;
+    }
   });
 });
