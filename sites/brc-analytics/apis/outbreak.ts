@@ -1,3 +1,4 @@
+import { type PrecomputedResult } from "@brc/types/precomputedResults";
 import { type PrecomputedResults } from "@catalog/schema/generated/schema";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import {
@@ -10,6 +11,7 @@ export interface Outbreak {
   highlight_descendant_taxonomy_ids: number[] | null;
   name: string;
   precomputed?: PrecomputedResults;
+  precomputedResults?: PrecomputedResult[];
   priority: OUTBREAK_PRIORITY;
   resources: OutbreakResource[];
   taxonName?: string;

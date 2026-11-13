@@ -1,5 +1,6 @@
 import { type Outbreak } from "@brc/apis/outbreak";
 import * as V from "@brc/viewModelBuilders/viewModelBuilders";
+import { PrecomputedResultsSection } from "@brc/views/PriorityPathogenView/components/PrecomputedResultsSection/precomputedResultsSection";
 import { PrecomputedSection } from "@brc/views/PriorityPathogenView/components/PrecomputedSection/precomputedSection";
 import { ResourcesSection } from "@brc/views/PriorityPathogenView/components/ResourcesSection/resourcesSection";
 import { MDXSection } from "@brc/views/PriorityPathogenView/ui/Section/MDXSection/mdxSection";
@@ -13,6 +14,10 @@ export const priorityPathogenMainColumn: ComponentsConfig = [
     component: PrecomputedSection,
     viewBuilder: V.buildPriorityPathogenPrecomputed,
   } as ComponentConfig<typeof PrecomputedSection, Outbreak>,
+  {
+    component: PrecomputedResultsSection,
+    viewBuilder: V.buildPriorityPathogenPrecomputedResults,
+  } as ComponentConfig<typeof PrecomputedResultsSection, Outbreak>,
   {
     component: MDXSection,
     viewBuilder: V.buildPriorityPathogenDescription,

@@ -8,6 +8,7 @@ import { ROUTES as SITE_ROUTES } from "@brc/routes/constants";
 import { type BRCOrganismDetail } from "@brc/services/staticGeneration/organism/types";
 import { type Main as OrganismViewMain } from "@brc/views/OrganismView/components/Main/main";
 import { Tabs } from "@brc/views/OrganismView/components/Tabs/tabs";
+import { type PrecomputedResultsSection } from "@brc/views/PriorityPathogenView/components/PrecomputedResultsSection/precomputedResultsSection";
 import { type PrecomputedSection } from "@brc/views/PriorityPathogenView/components/PrecomputedSection/precomputedSection";
 import { type ResourcesSection } from "@brc/views/PriorityPathogenView/components/ResourcesSection/resourcesSection";
 import { type MDXSection } from "@brc/views/PriorityPathogenView/ui/Section/MDXSection/mdxSection";
@@ -467,6 +468,20 @@ export const buildPriorityPathogenPrecomputed = (
     precomputed: priorityPathogen.precomputed,
     title: "Pre-computed Results",
     workflow,
+  };
+};
+
+/**
+ * Build props for the priority pathogen precomputed results section.
+ * @param priorityPathogen - Priority pathogen entity.
+ * @returns Props to be used for the PrecomputedResultsSection component.
+ */
+export const buildPriorityPathogenPrecomputedResults = (
+  priorityPathogen: Outbreak
+): ComponentProps<typeof PrecomputedResultsSection> => {
+  return {
+    results: priorityPathogen.precomputedResults,
+    title: "Precomputed Segmentation Results",
   };
 };
 
