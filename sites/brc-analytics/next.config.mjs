@@ -14,7 +14,11 @@ const nextConfig = {
   output: "export",
   pageExtensions: ["md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  transpilePackages: ["@databiosphere/findable-ui"],
+  transpilePackages: [
+    "@databiosphere/findable-ui",
+    "@mdx-js/react",
+    "next-mdx-remote",
+  ],
 };
 
 export default withSentryConfig(withMDX(nextConfig), {

@@ -1,3 +1,4 @@
+import { MDX_RUNTIME_SCOPE } from "@brc/utils/mdxRuntimeScope";
 import { Section } from "@brc/views/PriorityPathogenView/ui/Section/section";
 import { FluidPaper } from "@databiosphere/findable-ui/lib/components/common/Paper/components/FluidPaper/fluidPaper";
 import { MDXRemote } from "next-mdx-remote";
@@ -15,6 +16,7 @@ export const MDXSection = ({
       <MDXRemote
         components={{ ...COMPONENTS, ...components }}
         {...mdxRemoteSerializeResult}
+        scope={{ ...mdxRemoteSerializeResult.scope, ...MDX_RUNTIME_SCOPE }}
       />
     </Section>
   );

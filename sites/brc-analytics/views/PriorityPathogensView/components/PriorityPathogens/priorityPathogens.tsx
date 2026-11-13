@@ -1,5 +1,6 @@
 import { SLUGIFY_OPTIONS } from "@brc/constants/slugify";
 import { ROUTES } from "@brc/routes/constants";
+import { MDX_RUNTIME_SCOPE } from "@brc/utils/mdxRuntimeScope";
 import {
   getPriorityColor,
   getPriorityLabel,
@@ -46,7 +47,13 @@ export const PriorityPathogens = ({
                     color={TYPOGRAPHY_PROPS.COLOR.INK_LIGHT}
                     variant={TYPOGRAPHY_PROPS.VARIANT.BODY_400_2_LINES}
                   >
-                    <MDXRemote {...priorityPathogen.description} />
+                    <MDXRemote
+                      {...priorityPathogen.description}
+                      scope={{
+                        ...priorityPathogen.description.scope,
+                        ...MDX_RUNTIME_SCOPE,
+                      }}
+                    />
                   </StyledSectionText>
                 </SectionContent>
                 <Chip
