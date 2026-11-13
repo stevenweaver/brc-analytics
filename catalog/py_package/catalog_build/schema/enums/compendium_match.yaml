@@ -1,0 +1,16 @@
+id: https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/enums/compendium_match.yaml#
+name: enums_compendium_match
+description: Enumeration describing how a precomputed result matches a reference compendium.
+
+enums:
+  CompendiumMatch:
+    description: The degree to which a precomputed sequence result matches an entry in the reference compendium.
+    permissible_values:
+      EXACT:
+        description: The sequence matches a compendium entry exactly.
+      PARTIAL:
+        description: The sequence partially matches a compendium entry.
+      NOVEL:
+        description: The sequence does not match any compendium entry and is considered novel.
+      UNRESOLVED:
+        description: A compendium match could not be determined for the sequence.

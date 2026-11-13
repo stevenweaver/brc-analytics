@@ -1,0 +1,139 @@
+id: https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/precomputed_results.yaml#
+name: precomputed_results
+description: Schema for precomputed sequence analysis results, including sequence segmentation, coordinate barcode intervals, and workflow provenance.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+  - enums/compendium_match
+
+classes:
+  PrecomputedResultsDataset:
+    description: Root object containing a collection of precomputed sequence analysis results.
+    tree_root: true
+    attributes:
+      results:
+        description: Collection of precomputed results, one per analyzed sequence.
+        required: true
+        multivalued: true
+        range: PrecomputedResult
+
+  PrecomputedResult:
+    description: Precomputed analysis result for a single sequence, including its segmentation, coordinate barcode intervals, and the provenance of the workflow that produced it.
+    attributes:
+      sequence_id:
+        description: Identifier of the analyzed sequence.
+        required: true
+        range: string
+      structural_formula:
+        description: Compact string representation of the sequence's structural composition.
+        required: true
+        range: string
+      coordinate_barcode:
+        description: String encoding of the sequence's coordinate barcode.
+        required: true
+        range: string
+      compendium_match:
+        description: The degree to which the sequence matches an entry in the reference compendium.
+        required: true
+        range: CompendiumMatch
+      segments:
+        description: List of segment alignments describing how regions of the sequence align to reference segments.
+        required: false
+        multivalued: true
+        range: SegmentAlignment
+      breakpoints:
+        description: List of coordinate barcode intervals representing candidate breakpoints and their statistical support.
+        required: false
+        multivalued: true
+        range: BarcodeInterval
+      provenance:
+        description: Provenance of the workflow invocation that produced this result.
+        required: true
+        range: WorkflowProvenance
+
+  SegmentAlignment:
+    description: Alignment of a sequence segment against a reference, with lineage assignment and alignment quality metrics.
+    attributes:
+      segment_key:
+        description: Identifier of the reference segment this alignment corresponds to.
+        required: true
+        range: string
+      start:
+        description: Start coordinate of the aligned region (1-based, inclusive).
+        required: true
+        range: integer
+      end:
+        description: End coordinate of the aligned region (1-based, inclusive).
+        required: true
+        range: integer
+      lineage_id:
+        description: Identifier of the lineage assigned to this segment.
+        required: false
+        range: string
+      identity:
+        description: Fraction of aligned positions that are identical to the reference (0.0-1.0).
+        required: false
+        range: float
+      coverage:
+        description: Fraction of the reference segment covered by the alignment (0.0-1.0).
+        required: false
+        range: float
+
+  BarcodeInterval:
+    description: A coordinate barcode interval with its confidence bounds and the 2x2 contingency statistics supporting it.
+    attributes:
+      position:
+        description: Genomic position of the interval or breakpoint.
+        required: true
+        range: integer
+      ci_low:
+        description: Lower bound of the confidence interval for the position.
+        required: false
+        range: integer
+      ci_high:
+        description: Upper bound of the confidence interval for the position.
+        required: false
+        range: integer
+      p_fisher:
+        description: P-value from Fisher's exact test on the supporting 2x2 contingency table.
+        required: false
+        range: float
+      n11:
+        description: Count in cell (1,1) of the 2x2 contingency table.
+        required: false
+        range: integer
+      n12:
+        description: Count in cell (1,2) of the 2x2 contingency table.
+        required: false
+        range: integer
+      n21:
+        description: Count in cell (2,1) of the 2x2 contingency table.
+        required: false
+        range: integer
+      n22:
+        description: Count in cell (2,2) of the 2x2 contingency table.
+        required: false
+        range: integer
+
+  WorkflowProvenance:
+    description: Provenance identifying the workflow and tool invocation that produced a precomputed result.
+    attributes:
+      workflow_trs_id:
+        description: Tool Registry Service (TRS) identifier of the workflow.
+        required: true
+        range: string
+      workflow_version:
+        description: Version of the workflow that was invoked.
+        required: true
+        range: string
+      invocation_id:
+        description: Identifier of the specific workflow invocation that produced the result.
+        required: true
+        range: string
+      tool_version:
+        description: Version of the underlying tool used within the workflow.
+        required: false
+        range: string

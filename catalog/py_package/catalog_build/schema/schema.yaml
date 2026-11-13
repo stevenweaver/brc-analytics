@@ -10,6 +10,7 @@ imports:
   - ./organisms
   - ./outbreaks
   - ./pangenomes
+  - ./precomputed_results
   - ./taxa
   - ./workflow_categories
   - ./workflows

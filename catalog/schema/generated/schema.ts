@@ -154,6 +154,20 @@ export enum OutbreakResourceType {
     HGPHYLOPLACE = "HGPHYLOPLACE",
 };
 /**
+* The degree to which a precomputed sequence result matches an entry in the reference compendium.
+*/
+export enum CompendiumMatch {
+    
+    /** The sequence matches a compendium entry exactly. */
+    EXACT = "EXACT",
+    /** The sequence partially matches a compendium entry. */
+    PARTIAL = "PARTIAL",
+    /** The sequence does not match any compendium entry and is considered novel. */
+    NOVEL = "NOVEL",
+    /** A compendium match could not be determined for the sequence. */
+    UNRESOLVED = "UNRESOLVED",
+};
+/**
 * Set of IDs of workflow categories.
 */
 export enum WorkflowCategoryId {
@@ -369,6 +383,93 @@ export interface Pangenomes {
 export interface Pangenome {
     /** The unique identifier for the pangenome. */
     id: string,
+}
+
+
+/**
+ * Root object containing a collection of precomputed sequence analysis results.
+ */
+export interface PrecomputedResultsDataset {
+    /** Collection of precomputed results, one per analyzed sequence. */
+    results: PrecomputedResult[],
+}
+
+
+/**
+ * Precomputed analysis result for a single sequence, including its segmentation, coordinate barcode intervals, and the provenance of the workflow that produced it.
+ */
+export interface PrecomputedResult {
+    /** Identifier of the analyzed sequence. */
+    sequence_id: string,
+    /** Compact string representation of the sequence's structural composition. */
+    structural_formula: string,
+    /** String encoding of the sequence's coordinate barcode. */
+    coordinate_barcode: string,
+    /** The degree to which the sequence matches an entry in the reference compendium. */
+    compendium_match: CompendiumMatch,
+    /** List of segment alignments describing how regions of the sequence align to reference segments. */
+    segments?: SegmentAlignment[] | null,
+    /** List of coordinate barcode intervals representing candidate breakpoints and their statistical support. */
+    breakpoints?: BarcodeInterval[] | null,
+    /** Provenance of the workflow invocation that produced this result. */
+    provenance: WorkflowProvenance,
+}
+
+
+/**
+ * Alignment of a sequence segment against a reference, with lineage assignment and alignment quality metrics.
+ */
+export interface SegmentAlignment {
+    /** Identifier of the reference segment this alignment corresponds to. */
+    segment_key: string,
+    /** Start coordinate of the aligned region (1-based, inclusive). */
+    start: number,
+    /** End coordinate of the aligned region (1-based, inclusive). */
+    end: number,
+    /** Identifier of the lineage assigned to this segment. */
+    lineage_id?: string | null,
+    /** Fraction of aligned positions that are identical to the reference (0.0-1.0). */
+    identity?: number | null,
+    /** Fraction of the reference segment covered by the alignment (0.0-1.0). */
+    coverage?: number | null,
+}
+
+
+/**
+ * A coordinate barcode interval with its confidence bounds and the 2x2 contingency statistics supporting it.
+ */
+export interface BarcodeInterval {
+    /** Genomic position of the interval or breakpoint. */
+    position: number,
+    /** Lower bound of the confidence interval for the position. */
+    ci_low?: number | null,
+    /** Upper bound of the confidence interval for the position. */
+    ci_high?: number | null,
+    /** P-value from Fisher's exact test on the supporting 2x2 contingency table. */
+    p_fisher?: number | null,
+    /** Count in cell (1,1) of the 2x2 contingency table. */
+    n11?: number | null,
+    /** Count in cell (1,2) of the 2x2 contingency table. */
+    n12?: number | null,
+    /** Count in cell (2,1) of the 2x2 contingency table. */
+    n21?: number | null,
+    /** Count in cell (2,2) of the 2x2 contingency table. */
+    n22?: number | null,
+}
+
+
+/**
+ * Provenance identifying the workflow and tool invocation that produced a precomputed result.
+ */
+export interface WorkflowProvenance {
+    /** Tool Registry Service (TRS) identifier of the workflow. */
+    workflow_trs_id: string,
+    /** Version of the workflow that was invoked. */
+    workflow_version: string,
+    /** Identifier of the specific workflow invocation that produced the result. */
+    invocation_id: string,
+    /** Version of the underlying tool used within the workflow. */
+    tool_version?: string | null,
 }
 
 
