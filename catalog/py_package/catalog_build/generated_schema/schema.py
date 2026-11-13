@@ -555,7 +555,7 @@ class PrecomputedRelease(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/galaxyproject/brc-analytics/blob/main/catalog/py_package/catalog_build/schema/outbreaks.yaml#'})
 
-    manifest_url: str = Field(default=..., description="""The complete URL (including http/https protocol) of the manifest describing the published results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PrecomputedRelease']} })
+    manifest_url: str = Field(default=..., description="""Location of the manifest describing the published results, as a path relative to the configured release base URL, or a complete URL (including http/https protocol) where the results are hosted elsewhere.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PrecomputedRelease']} })
     last_updated: str = Field(default=..., description="""The date (YYYY-MM-DD) the results were last updated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PrecomputedRelease']} })
     record_count: Optional[int] = Field(default=None, description="""The number of records in the published results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PrecomputedRelease']} })
 

@@ -114,7 +114,7 @@ classes:
     description: Details of a published set of pre-computed results.
     attributes:
       manifest_url:
-        description: The complete URL (including http/https protocol) of the manifest describing the published results.
+        description: Location of the manifest describing the published results, as a path relative to the configured release base URL, or a complete URL (including http/https protocol) where the results are hosted elsewhere.
         required: true
         range: string
       last_updated:

@@ -1,3 +1,4 @@
+import { getReleaseManifestUrl } from "@brc/config/precomputedRelease";
 import { StyledList } from "@brc/views/PriorityPathogenView/components/ResourcesSection/resourcesSection.styles";
 import { Section } from "@brc/views/PriorityPathogenView/ui/Section/section";
 import { Link } from "@databiosphere/findable-ui/lib/components/Links/components/Link/link";
@@ -33,7 +34,8 @@ export const PrecomputedSection = ({
   ...props /* Section Props */
 }: Props): JSX.Element | null => {
   const release = precomputed?.release;
-  const manifest = useReleaseManifest(release?.manifest_url ?? "");
+  const manifestUrl = getReleaseManifestUrl(release?.manifest_url);
+  const manifest = useReleaseManifest(manifestUrl ?? "");
   if (!precomputed || !release) return null;
   const version =
     manifest?.workflowVersion ??
@@ -105,9 +107,11 @@ export const PrecomputedSection = ({
               <Link label={fileLabel(file)} url={file.url} />
             </ListItem>
           ))}
-          <ListItem disableGutters disablePadding>
-            <Link label="Download manifest" url={release.manifest_url} />
-          </ListItem>
+          {manifestUrl && (
+            <ListItem disableGutters disablePadding>
+              <Link label="Download manifest" url={manifestUrl} />
+            </ListItem>
+          )}
         </StyledList>
       </Stack>
     </Section>

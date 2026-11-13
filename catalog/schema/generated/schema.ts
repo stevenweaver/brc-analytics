@@ -337,7 +337,7 @@ export interface PrecomputedDiscovery {
  * Details of a published set of pre-computed results.
  */
 export interface PrecomputedRelease {
-    /** The complete URL (including http/https protocol) of the manifest describing the published results. */
+    /** Location of the manifest describing the published results, as a path relative to the configured release base URL, or a complete URL (including http/https protocol) where the results are hosted elsewhere. */
     manifest_url: string,
     /** The date (YYYY-MM-DD) the results were last updated. */
     last_updated: string,
