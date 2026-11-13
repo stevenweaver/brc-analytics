@@ -4,16 +4,18 @@ import { WorkflowsSection } from "@repo/shared/views/OrganismView/components/Mai
 import { type RowData } from "@tanstack/react-table";
 import { type JSX } from "react";
 import { PangenomeSection } from "./components/PangenomeSection/pangenomeSection";
+import { PrecomputedResultsSection } from "./components/PrecomputedResultsSection/precomputedResultsSection";
 import { type Props } from "./types";
 
 /**
  * Main column for the organism detail page: composes the organism-scoped
  * workflows section, the assemblies section, and (when enabled and available)
- * the pangenome section.
+ * the pangenome and precomputed results sections.
  * @param props - Component props.
  * @param props.assembly - Assemblies section props (column presets + table options).
  * @param props.entityId - Organism entity ID.
  * @param props.pangenome - The species' pangenome bundle, when it has one.
+ * @param props.precomputedResults - The organism's precomputed results, when it has any.
  * @param props.workflowCategories - Organism-compatible workflow categories.
  * @returns A JSX element with the organism detail main content.
  */
@@ -21,6 +23,7 @@ export const Main = <T extends RowData>({
   assembly,
   entityId,
   pangenome,
+  precomputedResults,
   workflowCategories,
 }: Props<T>): JSX.Element => {
   return (
@@ -31,6 +34,7 @@ export const Main = <T extends RowData>({
       />
       <AssembliesSection {...assembly} />
       <PangenomeSection pangenome={pangenome} />
+      <PrecomputedResultsSection precomputedResults={precomputedResults} />
     </Stack>
   );
 };

@@ -511,7 +511,12 @@ export const buildOrganismHero = (
       />
     ),
     breadcrumbs: getOrganismEntityBreadcrumbs(organism),
-    children: <Tabs pangenome={organism.pangenome} />,
+    children: (
+      <Tabs
+        pangenome={organism.pangenome}
+        precomputedResults={organism.precomputedResults}
+      />
+    ),
     subTitle: tags.length > 0 ? <TagList tags={tags} /> : undefined,
     // Deliberately not italicized: at hero scale the scientific-name italic
     // reads as styling rather than nomenclature (body-scale renders keep it).
@@ -534,6 +539,7 @@ export const buildOrganismViewMain = (
     },
     entityId: getOrganismId(organism),
     pangenome: organism.pangenome,
+    precomputedResults: organism.precomputedResults,
     workflowCategories: organism.workflowCategories,
   };
 };

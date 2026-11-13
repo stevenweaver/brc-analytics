@@ -1,4 +1,5 @@
 import { useShowPangenome } from "@brc/views/OrganismView/hooks/UseShowPangenome/hook";
+import { useShowPrecomputedResults } from "@brc/views/OrganismView/hooks/UseShowPrecomputedResults/hook";
 import { TabScrollFuzz } from "@databiosphere/findable-ui/lib/components/common/Tabs/tabs.styles";
 import { BackPageTabs } from "@databiosphere/findable-ui/lib/components/Layout/components/BackPage/backPageView.styles";
 import { useHash } from "@databiosphere/findable-ui/lib/components/Layout/components/Outline/hooks/UseHash/hook";
@@ -15,12 +16,16 @@ import { getActiveTab } from "./utils";
  * that decision, so this and the PangenomeSection gate identically.
  * @param props - Component props.
  * @param props.pangenome - The species' pangenome bundle, when it has one.
+ * @param props.precomputedResults - The organism's precomputed results, when it has any.
  * @returns The organism-page tabs.
  */
-export const Tabs = ({ pangenome }: Props): JSX.Element => {
+export const Tabs = ({ pangenome, precomputedResults }: Props): JSX.Element => {
   const { hash } = useHash();
   const { push } = useRouter();
   const showPangenome = Boolean(useShowPangenome(pangenome));
+  const showPrecomputedResults = Boolean(
+    useShowPrecomputedResults(precomputedResults)
+  );
   return (
     <BackPageTabs>
       <MTabs
@@ -29,11 +34,14 @@ export const Tabs = ({ pangenome }: Props): JSX.Element => {
           push(`#${v}`);
         }}
         slots={{ scrollButtons: TabScrollFuzz }}
-        value={getActiveTab(hash, showPangenome)}
+        value={getActiveTab(hash, showPangenome, showPrecomputedResults)}
       >
         <Tab label="Workflows" value={TAB.WORKFLOWS} />
         <Tab label="Assemblies" value={TAB.ASSEMBLIES} />
         {showPangenome && <Tab label="Pangenome" value={TAB.PANGENOME} />}
+        {showPrecomputedResults && (
+          <Tab label="Ready-to-use results" value={TAB.PRECOMPUTED_RESULTS} />
+        )}
       </MTabs>
     </BackPageTabs>
   );
