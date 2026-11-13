@@ -1,0 +1,327 @@
+[
+  {
+    "bundle": {
+      "bytes": 901215,
+      "name": "h5n1-dairy-cattle-genomes-and-genotypes-2026-11-13.zip",
+      "path": "h5n1-dairy-cattle-genomes-and-genotypes-2026-11-13.zip",
+      "sha256": "485106a65d58e02c1dea26672ef415dd83ee96353201c65ba1a26f28e3e04ead"
+    },
+    "createDate": "2026-11-13",
+    "description": "Consensus genomes for H5N1 samples from the U.S. dairy cattle outbreak, each classified by 8-segment lineage profile and coordinate barcode. Most are from cattle; the rest are from poultry, other animals and pet food. Most common: B3.13 (4814), B3.6 (53), and 6 other genotypes. Updated as new sequencing data is published.",
+    "id": "h5n1-fixed-reference-consensus-dev-2026-11-13",
+    "inputs": {
+      "runCount": 4960,
+      "studies": [
+        {
+          "accession": "PRJNA1102327",
+          "description": "U.S. H5Nx clade 2.3.4.4b immediate releases related to emergence and spread in dairy cattle",
+          "runCount": 4960
+        }
+      ]
+    },
+    "kind": "Workflow result",
+    "outputs": [
+      {
+        "description": "Consensus sequence of each of the 8 flu segments: one FASTA file per segment, with every sample in it.",
+        "files": [
+          {
+            "bytes": 8536205,
+            "name": "HA",
+            "path": "per-segment-consensus-sequences-with-samples-combined/HA.fasta",
+            "sha256": "c94a95ef6082d6834a5b966e6ec792229b2c984d7956649a34abdef7b5871325"
+          },
+          {
+            "bytes": 7077920,
+            "name": "NA",
+            "path": "per-segment-consensus-sequences-with-samples-combined/NA.fasta",
+            "sha256": "aedf7b193f616e2e728f8aa9ec59649f656f747658049d1804a9ba677f0268a8"
+          },
+          {
+            "bytes": 11398023,
+            "name": "PB2",
+            "path": "per-segment-consensus-sequences-with-samples-combined/PB2.fasta",
+            "sha256": "14981befd4feb7181960c8341c5f0143284833ac71b76d859e6b6e8596e3a3f8"
+          },
+          {
+            "bytes": 11368158,
+            "name": "PB1",
+            "path": "per-segment-consensus-sequences-with-samples-combined/PB1.fasta",
+            "sha256": "1272500eb7dd24c92fca85655eb1c0ca5cb673e9e4e421ccf9a75842eead2220"
+          },
+          {
+            "bytes": 10750948,
+            "name": "PA",
+            "path": "per-segment-consensus-sequences-with-samples-combined/PA.fasta",
+            "sha256": "d0d8745ef79323f1d95125ad8f076eb5be109a941e5433e99a5d32c6941d85e3"
+          },
+          {
+            "bytes": 7509440,
+            "name": "NP",
+            "path": "per-segment-consensus-sequences-with-samples-combined/NP.fasta",
+            "sha256": "82791c5a69cfc857a9ae74f6f087db88cf1de5969366fec339a17d188f89c062"
+          },
+          {
+            "bytes": 4955042,
+            "name": "MP",
+            "path": "per-segment-consensus-sequences-with-samples-combined/MP.fasta",
+            "sha256": "1909f7939eac6c35efcfaa9b28e97f3ffbc41064efe88827f1cbb0dc3d71cfc5"
+          },
+          {
+            "bytes": 4240734,
+            "name": "NS",
+            "path": "per-segment-consensus-sequences-with-samples-combined/NS.fasta",
+            "sha256": "18fb38265aff2abe09fb56123a13736973f8eed18e0f43c29cc06e0b2585ca9f"
+          }
+        ],
+        "label": "Genomes"
+      },
+      {
+        "description": "One row per sample: its genotype, segment lineages, structural formula, and coordinate barcode.",
+        "files": [
+          {
+            "bytes": 500362,
+            "name": "sample-summary.tabular",
+            "path": "sample-summary.tabular",
+            "sha256": "354d81939d5dc0af079c8a4fbcc81321c3e60edb76065db32cc049150ae763b9"
+          }
+        ],
+        "label": "Genotypes"
+      },
+      {
+        "description": "Structured per-sequence segmentation and coordinate-barcode report across all 8 segments.",
+        "files": [
+          {
+            "bytes": 1482910,
+            "name": "segmentation-report.json",
+            "path": "segmentation-report.json",
+            "sha256": "7685eaf0ddcfa7846ef7c0bef4a0f93f5b8913ca238c987998a93881e5d0b932"
+          }
+        ],
+        "label": "Segmentation report"
+      },
+      {
+        "description": "Exactly how this was produced: workflow version, Galaxy invocation, inputs and a checksum for every file.",
+        "files": [
+          {
+            "bytes": 1882630,
+            "name": "manifest.json",
+            "path": "manifest.json",
+            "sha256": "271c9155c6e0f80e7d8a5e2d6dd1656ae013feb1fc3fc4eb27a69bddde5b79c1"
+          }
+        ],
+        "label": "Provenance manifest"
+      }
+    ],
+    "provenance": {
+      "dev": true,
+      "galaxy": {
+        "historyUrl": null,
+        "invocationUrl": null,
+        "reportPageUrl": null,
+        "version": "25.0.3",
+        "workflowUrl": null
+      },
+      "galaxyVersion": "25.0.3",
+      "invocationId": "e38f593eae81d119",
+      "parameters": {
+        "Consensus": "ivar consensus: frequency 0.75, minimum depth 5, minimum base quality 20",
+        "Genotyping": "RhizType 0.1.0 (RhizType-8seg-Compendium-2026.1)",
+        "Mapping": "bwa mem (defaults), samtools view -F 4",
+        "Reference genome": "A/cattle/Texas/24-008749-003/2024 (GenBank PP755589-PP755596)"
+      },
+      "reference": {
+        "accessions": [
+          "PP755589.1",
+          "PP755590.1",
+          "PP755591.1",
+          "PP755592.1",
+          "PP755593.1",
+          "PP755594.1",
+          "PP755595.1",
+          "PP755596.1"
+        ],
+        "name": "A/cattle/Texas/24-008749-003/2024 (H5N1)"
+      },
+      "resultsFingerprint": "9c2550b211a84f34828b251153e127e7aa2b89029d7927a72fc6d2ff80b61a9b",
+      "rocrateUrl": null,
+      "source": null,
+      "trsId": "#workflow/github.com/iwc-workflows/h5n1-fixed-reference-consensus/main",
+      "workflowName": "H5N1 fixed-reference consensus sequences and multi-segment coordinate-barcode genotype",
+      "workflowVersion": "0.2-dev"
+    },
+    "releasePath": "avian-influenza--h5n1-fixed-reference-consensus/2026-11-13/",
+    "segmentationResults": [
+      {
+        "breakpoints": [],
+        "compendium_match": "EXACT",
+        "coordinate_barcode": "B3.13:1-2280|B3.13:2281-4621|B3.13:4622-6829|B3.13:6830-8533|B3.13:8534-10073|B3.13:10074-11483|B3.13:11484-12485|B3.13:12486-13323",
+        "provenance": {
+          "invocation_id": "galaxy-invocation",
+          "tool_version": "RhizType 0.1.0 (RhizType-8seg-Compendium-2026.1)",
+          "workflow_trs_id": "#workflow/github.com/iwc-workflows/h5n1-fixed-reference-consensus/main",
+          "workflow_version": "0.2-dev"
+        },
+        "segments": [
+          {
+            "coverage": 0.9518,
+            "end": 2280,
+            "identity": 0.9922,
+            "lineage_id": "B3.13",
+            "segment_key": "PB2",
+            "start": 1
+          },
+          {
+            "coverage": 0.9591,
+            "end": 4621,
+            "identity": 0.978,
+            "lineage_id": "B3.13",
+            "segment_key": "PB1",
+            "start": 2281
+          },
+          {
+            "coverage": 0.9599,
+            "end": 6829,
+            "identity": 0.9695,
+            "lineage_id": "B3.13",
+            "segment_key": "PA",
+            "start": 4622
+          },
+          {
+            "coverage": 0.957,
+            "end": 8533,
+            "identity": 0.981,
+            "lineage_id": "B3.13",
+            "segment_key": "HA",
+            "start": 6830
+          },
+          {
+            "coverage": 0.9532,
+            "end": 10073,
+            "identity": 0.9881,
+            "lineage_id": "B3.13",
+            "segment_key": "NP",
+            "start": 8534
+          },
+          {
+            "coverage": 0.9107,
+            "end": 11483,
+            "identity": 0.9759,
+            "lineage_id": "B3.13",
+            "segment_key": "NA",
+            "start": 10074
+          },
+          {
+            "coverage": 0.9507,
+            "end": 12485,
+            "identity": 0.9862,
+            "lineage_id": "B3.13",
+            "segment_key": "MP",
+            "start": 11484
+          },
+          {
+            "coverage": 0.9463,
+            "end": 13323,
+            "identity": 0.9937,
+            "lineage_id": "B3.13",
+            "segment_key": "NS",
+            "start": 12486
+          }
+        ],
+        "sequence_id": "SRR32970780",
+        "structural_formula": "B3.13 (8/8 segments)"
+      },
+      {
+        "breakpoints": [
+          {
+            "position": 4573
+          },
+          {
+            "position": 10052
+          },
+          {
+            "position": 11497
+          }
+        ],
+        "compendium_match": "NOVEL",
+        "coordinate_barcode": "B3.13:1-2280|A3:2281-4621|B3.13:4622-6829|B3.13:6830-8533|B3.13:8534-10073|B_ALT:10074-11483|B3.13:11484-12485|B3.13:12486-13323",
+        "provenance": {
+          "invocation_id": "galaxy-invocation",
+          "tool_version": "RhizType 0.1.0 (RhizType-8seg-Compendium-2026.1)",
+          "workflow_trs_id": "#workflow/github.com/iwc-workflows/h5n1-fixed-reference-consensus/main",
+          "workflow_version": "0.2-dev"
+        },
+        "segments": [
+          {
+            "coverage": 0.9518,
+            "end": 2280,
+            "identity": 0.9922,
+            "lineage_id": "B3.13",
+            "segment_key": "PB2",
+            "start": 1
+          },
+          {
+            "coverage": 0.9599,
+            "end": 4621,
+            "identity": 1.0,
+            "lineage_id": "A3",
+            "segment_key": "PB1",
+            "start": 2281
+          },
+          {
+            "coverage": 0.9599,
+            "end": 6829,
+            "identity": 0.9695,
+            "lineage_id": "B3.13",
+            "segment_key": "PA",
+            "start": 4622
+          },
+          {
+            "coverage": 0.957,
+            "end": 8533,
+            "identity": 0.981,
+            "lineage_id": "B3.13",
+            "segment_key": "HA",
+            "start": 6830
+          },
+          {
+            "coverage": 0.9532,
+            "end": 10073,
+            "identity": 0.9881,
+            "lineage_id": "B3.13",
+            "segment_key": "NP",
+            "start": 8534
+          },
+          {
+            "coverage": 0.9113,
+            "end": 11483,
+            "identity": 1.0,
+            "lineage_id": "B_ALT",
+            "segment_key": "NA",
+            "start": 10074
+          },
+          {
+            "coverage": 0.9507,
+            "end": 12485,
+            "identity": 0.9862,
+            "lineage_id": "B3.13",
+            "segment_key": "MP",
+            "start": 11484
+          },
+          {
+            "coverage": 0.9463,
+            "end": 13323,
+            "identity": 0.9937,
+            "lineage_id": "B3.13",
+            "segment_key": "NS",
+            "start": 12486
+          }
+        ],
+        "sequence_id": "SRR32970812",
+        "structural_formula": "D1.1[PB2:B3.13, PB1:A3, PA:B3.13, HA:B3.13, NP:B3.13, NA:B_ALT, MP:B3.13, NS:B3.13]"
+      }
+    ],
+    "speciesTaxonomyId": "2955291",
+    "title": "H5N1 in U.S. dairy cattle outbreak samples",
+    "version": "2026-11-13"
+  }
+]
